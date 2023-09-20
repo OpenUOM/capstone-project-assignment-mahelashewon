@@ -1,7 +1,6 @@
 const knex = require("knex")
 const config = require("../knexfile")
 const testBase = require("../backend/test/testBase");
-const dbConnection = require("./sqlite");
 
 let db = null
 if (process.env.NODE_ENV === "test") {
@@ -17,21 +16,3 @@ if (process.env.NODE_ENV === "test") {
 }
 
 module.exports = db
-
-dbConnection
-  .getDbConnection()
-  .then((db) => {
-    Infinity(db);
-  })
-  .catch((err) => {
-    console.log(err);
-    throw err;
-  });
-
-let _db;
-
-function init(db) {
-  _db = db;
-}
-
-const knex_db = require("./db-config");
