@@ -11,15 +11,17 @@ export class AppServiceService {
 
   constructor(private http: HttpClient) {
     if(environment.production == false){
-      this.ROOT_URL = 'http://localhost:4401'
+      this.ROOT_URL = 'test'
     }else{
       this.ROOT_URL = 'api'
     }
   }
 
+
   initializeDB(){
     return this.http.get(`/${this.ROOT_URL}/dbinitialize`)
   }
+
 
   getTeacherData(){
     return this.http.get(`/${this.ROOT_URL}/listTeachers`)
